@@ -1,13 +1,16 @@
 package com.example.ContactsRvAdapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mycontact.Contact
 import com.example.mycontact.R
+import com.example.mycontact.ViewContactActivity
 import com.example.mycontact.databinding.ContactListItemBinding
 import com.squareup.picasso.Picasso
 
@@ -34,6 +37,17 @@ class ContactsRvAdapter (var contactList: List<Contact>):
             .resize(300,350)
             .centerCrop()
             .into(holder.binding.ivContact)
+
+        val context=holder.itemView.context
+        holder.binding.ivContact.setOnClickListener {
+            Toast.makeText(context,"you ave click on ${currentContact.name}'s image",Toast.LENGTH_SHORT).show()
+        }
+        holder.binding.cvContact.setOnClickListener {
+            val intent=Intent(context,ViewContactActivity::class.java)
+            intent.putExtra("NAME",currentContact.name)
+            intent.putExtra("EMAIL",currentContact.Email)
+            context.startActivity(intent)
+        }
 
     }
 
