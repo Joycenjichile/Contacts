@@ -46,6 +46,9 @@ class ContactsRvAdapter (var contactList: List<Contact>):
             val intent=Intent(context,ViewContactActivity::class.java)
             intent.putExtra("NAME",currentContact.name)
             intent.putExtra("EMAIL",currentContact.Email)
+            intent.putExtra("ADDRESS",currentContact.address)
+            intent.putExtra("IMAGE",currentContact.image)
+
             context.startActivity(intent)
         }
 
